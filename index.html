@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício - One</title>
+</head>
+<body>
+    <script>
+
+        function buscarMultiplosDeCinco(numero) {
+            let multiplosDeCinco = [];
+            let multiplicador = 5;
+
+            for (let i = 0; i < numero; i++) {
+                const resultado = i * multiplicador;
+
+                if (resultado < numero) {
+                    multiplosDeCinco.push(resultado);
+                }
+            }
+
+            return multiplosDeCinco;
+        }
+
+        function buscarMultiplosDeTres(numero) {
+            let multiplosDeTres = [];
+            let multiplicador = 3;
+
+            for (let i = 0; i < numero; i++) {
+                const resultado = i * multiplicador;
+
+                if (resultado < numero) {
+                    multiplosDeTres.push(resultado);
+                }
+            }
+
+            return multiplosDeTres;
+        }
+
+        function unirArrays(array1, array2) {
+            let resultado = [];
+
+            if (array1.length > 0 && array2.length > 0) {
+                resultado = array1.concat(array2);
+            }
+
+            // Remove os números duplicados do array
+            resultado = resultado.filter((item, index) => resultado.indexOf(item) === index);
+
+            return resultado.sort(function(a, b) {
+                return a - b;
+            });
+        }
+
+        function verificarNumeros(numero) {
+            let numeros = [];
+            let soma = 0;
+
+            if (typeof(numero) === "number") {
+                let multiplosTres = [];
+                let multiplosCinco = [];
+
+                if (buscarMultiplosDeTres(numero).length > 0) {
+                    multiplosTres = buscarMultiplosDeTres(numero);
+                }
+
+                if (buscarMultiplosDeCinco(numero).length > 0) {
+                    multiplosCinco = buscarMultiplosDeCinco(numero);
+                }
+
+                numeros = unirArrays(multiplosTres, multiplosCinco);
+
+                for (let i = 0; i < numeros.length; i++) {
+                    soma+= numeros[i];
+                }
+
+                console.log('A soma total é: ', soma);
+                
+            } else {
+                console.log(
+                    'Error! Por favor, informe um número válido e tente novamente...'
+                );
+            }
+        }
+
+    </script>
+</body>
+</html>
